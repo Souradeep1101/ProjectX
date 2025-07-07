@@ -20,6 +20,10 @@ public:
 	// Sets default values for this character's properties
 	AMyPlayerCharacter();
 
+	/** The Enhanced Input Mapping Context asset (e.g. IMC_Default) */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	UInputMappingContext* InputMappingContext;
+
 	// Enable replication for this character
 	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 	bool bIsSprinting;

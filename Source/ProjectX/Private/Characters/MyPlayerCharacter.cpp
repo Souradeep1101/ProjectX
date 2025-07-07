@@ -24,6 +24,20 @@ AMyPlayerCharacter::AMyPlayerCharacter()
 void AMyPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Push the Enhanced Input Mapping Context
+	if (APlayerController* PC = Cast<APlayerController>(GetController()))
+	{
+		if (ULocalPlayer* LP = PC->GetLocalPlayer())
+		{
+			if (UEnhancedInputLocalPlayerSubsystem* Subsystem =
+				LP->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
+			{
+				// Priority 0 is fine for a single context
+				Subsystem->AddMappingContext(InputMappingContext, 0);
+			}
+		}
+	}
 	
 }
 
